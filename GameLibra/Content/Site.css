@@ -1,0 +1,332 @@
+﻿
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Texturina:wght@100;400&display=swap');
+
+.my-bg-dark {
+    background-color: #1B2838;
+    color: white;
+}
+
+th {
+    font-family: 'Texturina', serif;
+    font-weight: 500;
+}
+
+
+dt {
+    font-family: 'Texturina', serif;
+    font-size: 22px;
+    font-weight: normal;
+    padding-bottom: 1rem;
+    color: #b2b2b2;
+}
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+body {
+    padding: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: large;
+    background-color: #1B2838;
+}
+
+/*
+    #D8D8D8
+    #1B2838
+    #FADADD
+*/
+
+/* Navbar */
+
+.navbar-brand, .banner-brand {
+    font-family: 'Press Start 2P', cursive;
+}
+
+
+.first-head-span {
+    color: dimgrey;
+}
+
+.head-span {
+    color: cornflowerblue;
+}
+
+.navbar-brand:hover .first-head-span {
+    color: white;
+}
+
+.navbar-brand:hover .head-span {
+    color: lightblue;
+}
+
+.bg-dark {
+    background-color: black !important;
+}
+
+.nav-link {
+    color: dimgrey !important;
+}
+
+.nav-link:hover {
+    color: white !important;
+}
+
+/* Btns */
+.btn {
+    font-family: 'Texturina', serif;
+}
+
+.btn-purple {
+    color: #f1f1f1;
+    background-color: #986BBC;
+    border-color: #343a40;
+}
+
+.btn-purple:hover {
+    color: #fff;
+    background-color: #574881;
+}
+
+.btn-outline-purple {
+    color: #986BBC;
+    border-color: #986BBC;
+}
+
+    .btn-outline-purple:hover {
+        color: #fff;
+        background-color: #986BBC;
+        border-color: #986BBC;
+    }
+
+.btn-black {
+    color: #f3f3f3;
+    background-color: black;
+    border-color: black;
+}
+
+.btn-black:hover {
+   color: #fff;
+   background-color: #1a1a1a;
+}
+
+.btn-golden {
+    color: #f1f1f1;
+    background-color: #B88822;
+    border-color: #B88822;
+}
+
+    .btn-golden:hover {
+        color: #fff;
+        background-color: #A38233;
+    }
+
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 25rem;
+}
+
+.library-select {
+    width: 40rem;
+    max-width: 40rem;
+}
+
+/* carousel */
+.carousel-inner {
+    justify-content: center;
+    background-image: url("https://trashbox.ru/nowebp/827462_9745f4/screenshot_07.png");
+    background-repeat: repeat;
+}
+
+.details-banner {
+    justify-content: center;
+    background-image: url("https://cdn2.unrealengine.com/Diesel%2Fproduct%2Fcacao%2Fhome%2FEGS_RawFury_KingdomNewLands_Gallery07_Image-1920x1080-e67ff82c9ec20a65d3639cab2eb30275ad2d8d07.jpg");
+    background-repeat: repeat;
+    color: black;
+}
+
+
+.img-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.game-image {
+    height: 30rem;
+    max-height: 30rem;
+    width: auto;
+}
+
+/*Add Game To Library Banner*/
+.add-to-library-banner {
+    justify-content: center;
+    background-image: url("https://i.pinimg.com/originals/40/25/e1/4025e135470ade059a7c4de3dd2a40c7.jpg");
+    background-repeat: no-repeat;
+    background-position-y: 25%;
+    background-size: 100%;
+    color: white;
+}
+
+
+
+/*Searchbar*/
+.search-banner {
+    color: white;
+    background-image: url( "https://cdn.igromania.ru/mnt/news/9/7/0/5/b/8/92884/99beab8a2e66ef2a_1920xH.jpg" );
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+}
+
+.searchbar {
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    background-color: black;
+    border-radius: 30px;
+    padding: 10px;
+}
+
+.search_input {
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color: transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+}
+
+.searchbar:hover > .search_input {
+    padding: 0 10px;
+    width: 450px;
+    caret-color: white;
+    transition: width 0.4s linear;
+}
+
+.searchbar:hover > .search_icon {
+    background: white;
+    color: cornflowerblue;
+    text-decoration: none;
+}
+
+.search_icon {
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+}
+
+/*Library details*/
+.library-details-banner {
+    color: white;
+    background-image: url( "https://mocah.org/uploads/posts/1158695-books-symmetry-candles-library-ladders-shelves-Vladstudio-furniture.jpg" );
+    /*https://i.pinimg.com/originals/f5/81/ed/f581ed2cb2711454b0b62acf93004c6e.png
+        https://payload.cargocollective.com/1/20/668510/11031719/library_zoom_1000.png
+        https://preview.redd.it/eoebwvwcfqn01.png?auto=webp&s=09ab7f8e8faf6217514ce01085792a73ce55b102
+    */
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position-y: 15%;
+    background-position-x: 90%;
+}
+
+/* scroll-bar */
+
+/* width */
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/*Back to the top button*/
+
+
+#back-to-top-btn {
+    text-decoration: none;
+    display: inline-block;
+    background-color: #1B2838;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 40px;
+    right: 60px;
+    transition: background-color .3s, opacity .5s, visibility .5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+}
+
+    #back-to-top-btn::after {
+        content: "\f077";
+        font-family: FontAwesome;
+        font-weight: normal;
+        font-style: normal;
+        font-size: 2em;
+        line-height: 50px;
+        color: #fff;
+    }
+
+    #back-to-top-btn:hover {
+        cursor: pointer;
+        background-color: #333;
+    }
+
+    #back-to-top-btn:active {
+        background-color: #555;
+    }
+
+    #back-to-top-btn.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+/*text styles*/
+.font-roboto {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.font-texturina {
+    font-family: 'Texturina', serif;
+    font-size: 22px;
+    font-weight: normal;
+    padding-bottom: 1rem;
+    color: #b2b2b2;
+}

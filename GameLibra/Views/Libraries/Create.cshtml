@@ -1,0 +1,52 @@
+﻿@model GameLibra.Models.Library
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="library-details-banner  d-flex px-4 py-4 align-items-center justify-content-between">
+    <div>
+        <h5 class="banner-brand game-banner-brand">Create Library</h5>
+    </div>
+    @Html.ActionLink("Back to List", "List", null, new { @class = "btn btn-purple mb-2" })
+</div>
+<hr style="height:2px;border:none;color:#333;background-color:white;" />
+
+<h3>You are going to Create New library</h3>
+<hr style="height:1px;border:none;color:#333;background-color:white;" />
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2 font-texturina text-light" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Desription, htmlAttributes: new { @class = "control-label col-md-2 font-texturina text-light" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Desription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Desription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <input type="submit" value="Create" class="btn btn btn-purple float-right" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,53 @@
+﻿@model GameLibra.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+<div class="details-banner  d-flex px-4 py-5 align-items-center justify-content-between">
+    <div>
+        <h4 class="banner-brand game-banner-brand">@ViewBag.Title</h4>
+    </div>
+</div>
+<hr style="height:2px;border:none;color:#333;background-color:white;" />
+
+<div class="row">
+    <div class="col">
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label font-texturina" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label font-texturina" })
+                <div class="col-md-10">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-5 control-label font-texturina" })
+                <div class="col-md-10">
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Username, new { @class = "col-md-2 control-label font-texturina" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" class="btn btn btn-outline-light float-right" value="Register" />
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

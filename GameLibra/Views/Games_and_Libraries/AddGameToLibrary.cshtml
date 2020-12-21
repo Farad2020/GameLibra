@@ -1,0 +1,53 @@
+﻿@model GameLibra.Models.Games_and_Libraries
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="add-to-library-banner d-flex px-4 py-5 align-items-center justify-content-between">
+    <div>
+        @Html.ActionLink("Back to List", "List", "Games", null, new { @class = "btn btn-sm btn-purple mb-2" })
+        <h4 class="banner-brand text-center mt-3">Add @ViewBag.GameId.Name To One Of Your Libraries?</h4>
+    </div>
+</div>
+<hr style="height:2px;border:none;color:#333;background-color:white;" />
+
+<div class="row">
+    <label class="font-texturina control-label w-100 col-md-10"
+           style="font-size: xx-large;">You're going to add @ViewBag.GameId.Name. 
+        <span class="font-texturina control-label text-white " style="font-size: xx-large; width: 25rem;">Choose Library.</span>
+    </label>
+
+    @using (Html.BeginForm("AddGameToLibrary", "Games_and_Libraries",
+        FormMethod.Post, new { @class = "form-group w-100" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="col-md-10">
+                    @Html.HiddenFor(m => m.GameId, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.GameId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group d-flex flex-column col-md-2">
+                
+                @Html.DropDownList("LibraryId", null, htmlAttributes: new { @class = "form-control library-select" })
+                @Html.ValidationMessageFor(model => model.LibraryId, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn btn-purple float-right" />
+            </div>
+        </div>
+    }
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

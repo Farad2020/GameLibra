@@ -1,0 +1,76 @@
+﻿@using GameLibra.Models
+@model GameLibra.Models.Library
+
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="library-details-banner d-flex px-4 py-5 align-items-center justify-content-between">
+    <div>
+        @Html.ActionLink("Back to List", "List", null, new { @class = "btn btn-sm btn-purple mb-3" })
+        <h4 class="banner-brand ">
+            "@Html.DisplayFor(model => model.Name)"
+        </h4>
+        <h6 class="banner-brand text-right">library</h6>
+    </div>
+    @Html.ActionLink("Edit This Library", "Edit", new { id = Model.Id }, new { @class = "btn btn-purple float-right" })
+</div>
+
+<hr style="height:2px;border:none;color:#333;background-color:white;" />
+
+<div>
+    <div class="row mt-3">
+        <div class="col-3">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Creation_date)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Creation_date)
+                </dd>
+            </dl>
+        </div>
+        <div class="col">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Desription)
+                    @Html.ActionLink("Delete This Library", "Delete", new { id = Model.Id }, new { @class = "btn btn-sm btn-outline-danger float-right" })
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Desription)
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+<hr style="height:2px;border:none;color:#333;background-color:white;" />
+<dt>
+    <label style="color: white;font-size: xx-large">Included Games</label>
+</dt>
+<table class="table table-striped text-white">
+    
+    @foreach (Games_and_Libraries item in ViewBag.LibraryGames)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Game.Name)
+    </td>
+    <td style="width: 10%;">
+        @Html.ActionLink("Details", "PublicDetails", "Games", new { id = item.GameId }, new { @class = "btn btn-sm btn-outline-light" })
+    </td>
+    <td style="width: 10%;">
+        @Html.ActionLink("Delete", "Delete", "Games_and_Libraries", new { id = item.Id}, new { @class = "btn btn-sm btn-outline-danger" })
+    </td>
+</tr>
+    }
+
+</table>
+
+<div class="d-flex justify-content-end">
+    @Html.ActionLink("Libraries List", "List", null, new { @class = "btn btn-outline-light my-2" })
+</div>

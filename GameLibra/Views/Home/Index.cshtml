@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    $(document).ready(function () {
+        $("#show_option_1").click(function () {
+            $(".options_1").toggle();
+        });
+
+        $("#show_option_2").click(function () {
+            $(".options_2").toggle();
+        });
+    });
+</script>
+
+@{ string bg_image_url =
+             "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/clans/32967186/8f610750ebbd0695818716b47e43ca276bfabfff.jpg";
+    string bg_games_link_img_url =
+           "https://cdn2.unrealengine.com/Diesel%2Fproduct%2Fcacao%2Fhome%2FEGS_RawFury_KingdomNewLands_Gallery09_Image_WideShot-3840x914-882d1589946fd1717ec064576c33ab2c0c01143e.jpg";
+    string bg_libraries_link_img_url =
+           "https://etalongame.com/wp-content/uploads/2015/11/kingdom-2_etalongame.jpg";
+    }
+
+<style>
+    #main {
+        background-repeat: no-repeat;
+        background-size: auto 80vh;
+        background-position-x: center;
+        background-image: url( @bg_image_url );
+    }
+
+    #games_link_row {
+        background-image: url( @bg_games_link_img_url );
+        background-repeat: no-repeat;
+        background-size: auto 40vh;
+        background-position: center;
+    }
+
+    #libraries_link_row{
+        background-image: url( @bg_libraries_link_img_url );
+        background-repeat: no-repeat;
+        background-size: auto 50vh;
+        background-position: center;
+    }
+</style>
+
+
+<div id="main2" class="row pt-5 text-white" style="height: 80vh;">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8 align-items-center justify-content-center">
+        <div class="d-flex justify-content-center align-items-center h-50">
+            <h1 class="text-center" style="font-family: 'Press Start 2P', cursive; font-size: 56px;">
+                Welcome To   <span class="first-head-span">Game</span><span class="head-span">Libra</span>
+            </h1>
+        </div>
+    </div>
+    <div class="col-md-2">
+    </div>
+</div>
+
+<div class="row" style="height: 40vh; margin-top: 7vh;">
+    <div class="col-sm mr-1" id="games_link_row">
+        <div class="d-flex justify-content-center align-items-center h-75 pb-5">
+            <a href="~/Games/List" class="btn btn-purple align-self-center btn-lg"> You can see all the games here </a>
+        </div>
+    </div>
+
+    <div class="col-sm ml-1" id="libraries_link_row">
+        <div class="d-flex  justify-content-center align-items-center h-75 pb-5">
+            <a href="~/Libraries/List" class="btn btn-dark align-self-center btn-lg py-2" style=" line-height: 1;">
+                You can create your own libraries.
+                <span style="font-size: 10px; margin:0; padding:0;"><br>*But first you have to be logged in and will not own anything. </span>
+            </a>
+        </div>
+
+    </div>
+</div>

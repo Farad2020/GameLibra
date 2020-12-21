@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Html.Partial("_HeaderLoader")
+    <style>
+
+    </style>
+</head>
+<body class="text-white">
+    @Html.Partial("_Navbar")
+
+    <a id="back-to-top-btn"></a>
+    <div id="main" style="margin: 0; padding: 0;">
+        <div class="container-lg">
+            <div style=" min-height: 80vh;">
+                @RenderBody()
+            </div>
+            <hr style="        height: 1px;
+        border: none;
+        color: #333;
+        background-color: white;" />
+            <footer>
+                <p class="text-center">&copy; @DateTime.Now.Year - GameLibra by <a href="https://github.com/Farad2020">Faraday</a>.</p>
+            </footer>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/main")
+    @*<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>*@
+    @RenderSection("scripts", required: false)
+    <script src="https://kit.fontawesome.com/8acbe491d9.js" crossorigin="anonymous"></script>
+
+    <script>
+        function popper() {
+            $('[data-toggle="popover-hover"]').popover({
+                html: true,
+                trigger: 'hover',
+                placement: 'right',
+                content: function () { return '<img class="hover-image" src="' + $(this).data('img') + '" />'; }
+            });
+        }
+    </script>
+
+</body>
+</html>

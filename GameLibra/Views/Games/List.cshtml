@@ -1,0 +1,54 @@
+﻿@using GameLibra.Models
+@model IEnumerable<GameLibra.Models.Game>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{var pics = (IEnumerable<Games_and_Images>)ViewBag.Pics;}
+
+
+
+
+<div class="search-banner d-flex px-4 py-5 align-items-center justify-content-between">
+    <h4 class="banner-brand ">Our Games</h4>
+
+
+    <div class="d-flex justify-content-center h-100 float-right">
+        <form asp-controller="Games" asp-action="List" method="get">
+            <div class="searchbar">
+                <input class="search_input" type="text" name="search_str" placeholder="Search Games...">
+                <a class="search_icon" style="cursor: initial;"><i class="fas fa-search"></i></a>
+            </div>
+        </form>
+    </div>
+</div>
+<hr style="height:2px;border:none;color:#333;background-color:none;" />
+<table class="table table-striped text-white">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Release_date)
+        </th>
+        <th style="width: 10%;"></th>
+    </tr>
+    @foreach (Game item in Model)
+    {
+        <tr>
+            <td>
+                <a data-toggle="popover-hover" data-img="@pics.First(i => i.GameId.Equals(item.Id)).Link">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Release_date)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "PublicDetails", "Games", new { id = item.Id }, new { @class = "btn btn-sm btn-outline-light" })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,66 @@
+﻿@model GameLibra.Models.Library
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="library-details-banner  d-flex px-4 py-4 align-items-center justify-content-between">
+    <div>
+        @Html.ActionLink("Back to Library", "Details", new { id = Model.Id }, new { @class = "btn btn-sm btn-purple mb-3" })
+        <h5 class="banner-brand game-banner-brand">@Model.Name</h5>
+    </div>
+    @Html.ActionLink("Back to List", "List", null, new { @class = "btn btn-purple mb-2" })
+</div>
+<hr style="height:2px;border:none;color:#333;background-color:white;" />
+
+<h3>Are you sure you, want to delete '@Model.Name' library?</h3>
+<hr style="height:1px;border:none;color:#333;background-color:white;" />
+<div>
+    <div class="row mt-3">
+        <div class="col-3">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Creation_date)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Creation_date)
+                </dd>
+
+            </dl>
+        </div>
+
+        <div class="col">
+            <dl class="dl-horizontal">
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Desription)
+                    <input type="submit" form="deleteForm" value="Delete" class="btn btn-sm btn-outline-danger float-lg-right" />
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Desription)
+                </dd>
+            </dl>
+        </div>
+
+    </div>
+
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "deleteForm" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn btn-outline-danger float-right" />
+        </div>
+    }
+</div>

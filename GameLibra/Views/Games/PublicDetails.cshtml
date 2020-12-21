@@ -1,0 +1,180 @@
+﻿@using GameLibra.Models
+@model GameLibra.Models.Game
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="details-banner  d-flex px-4 py-4 align-items-center justify-content-between">
+    <div>
+        @Html.ActionLink("Back to List", "List", null, new { @class = "btn btn-sm btn-dark mb-2" } )
+        <h5 class="banner-brand game-banner-brand">@Model.Name</h5>
+    </div>
+
+
+    <div class="d-flex justify-content-center h-100 float-right">
+        <form asp-controller="Games" asp-action="List" method="get">
+            <div class="searchbar">
+                <input class="search_input" type="text" name="search_str" placeholder="Search Games...">
+                <a class="search_icon"><i class="fas fa-search"></i></a>
+            </div>
+        </form>
+    </div>
+</div>
+<hr style="height:2px;border:none;color:#333;background-color:white;"  />
+
+<div>
+    @if (Model.GameImages.Count() > 0 && Model.GameTrailers.Count() > 0) {
+    <div id="bannerCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="img-block">
+                    <iframe width="764" height="480" src="https://www.youtube.com/embed/@Model.GameTrailers.First().Link" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                </div>
+            </div>
+            @foreach (Games_and_Images item in Model.GameImages)
+            {
+                <div class="carousel-item">
+                    <div class="img-block">
+                        <img class="d-block game-image" src="@item.Link" alt="@item.Game.Name" />
+                    </div>
+                </div>
+            }
+        </div>
+        @if (Model.GameImages.Count() > 0)
+        {
+            <a class="carousel-control-prev" href="#bannerCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#bannerCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        }
+    </div>
+    }
+    
+
+    <div class="row mt-3">
+        <div class="col-3">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Developer.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Developer.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Publisher.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Publisher.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Release_date)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Release_date)
+                </dd>
+
+            </dl>
+        </div>
+
+        <div class="col">
+            <dl class="dl-horizontal">
+               
+                <dt>
+                    @Html.DisplayNameFor(model => model.Desription)
+                    @Html.ActionLink("Add to Library", "AddGameToLibrary", "Games_and_Libraries", new { gameId = Model.Id }, new { @class = "btn btn-sm btn-purple mb-2 float-right" })
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Desription)
+                </dd>
+            </dl>
+        </div>
+
+    </div>
+
+    <hr style="        height: 2px;
+        border: none;
+        color: #333;
+        background-color: white;" />
+
+    <div class="row">
+        <div class="col-3">
+
+            <dl class="dl-horizontal">
+                <dt>Genres:</dt>
+                @foreach (Games_and_Genres item in Model.GameGenres)
+                {
+                    <dd>
+                        @item.Genre.Name
+                    </dd>
+                }
+            </dl>
+
+        </div>
+
+        <div class="col-9">
+            <dl class="dl-horizontal">
+
+                <dt>Trailers:</dt>
+
+                <div id="trailersCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+                    <div class="carousel-inner" style="background: none;">
+                        @foreach (Games_and_Trailers item in Model.GameTrailers)
+                        {
+                            if (Model.GameTrailers.First().Equals(item))
+                            {
+                                <div class="carousel-item active">
+                                    <div class="img-block">
+                                        <iframe width="764" height="480" src="https://www.youtube.com/embed/@item.Link" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="carousel-item">
+                                    <div class="img-block">
+                                        <iframe width="764" height="480" src="https://www.youtube.com/embed/@item.Link" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            }
+
+                        }
+                    </div>
+                    @if (Model.GameTrailers.Count() > 1)
+                    {
+                        <a class="carousel-control-prev" href="#trailersCarousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#trailersCarousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+
+                    }
+                </div>
+            </dl>
+        </div>
+    </div>
+
+</div>
+<div class="d-flex justify-content-end">
+    @Html.ActionLink("Add to Library", "AddGameToLibrary", "Games_and_Libraries", new { gameId = Model.Id}, new { @class = "btn btn-outline-purple m-2" })
+    @Html.ActionLink("Games List", "List", null, new { @class = "btn btn-outline-light my-2" })
+</div>
