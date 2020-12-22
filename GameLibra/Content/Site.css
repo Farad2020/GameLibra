@@ -330,3 +330,72 @@ textarea {
     padding-bottom: 1rem;
     color: #b2b2b2;
 }
+
+/*404 page*/
+.image-404-cover{
+    max-height: 20rem;
+    overflow:hidden;
+}
+
+.image-404 {
+}
+
+/*popper*/
+.hover-image {
+    max-width: 20rem;
+    max-height: 20rem;
+}
+
+.popover {
+    max-width: 22rem;
+    max-height: 21rem;
+    background-color: #1B2838;
+    border: none;
+}
+
+.data-popper-arrow{
+    visibility:hidden;
+}
+
+.arrow::after {
+    visibility: hidden;
+}
+.popover-body {
+    max-width: 22rem;
+    max-height: 22rem;
+    background-color: #1B2838;
+}
+
+/*offers div*/
+.offer-block {
+    background-color: black;
+    border-radius: 10px;
+    padding: 10px;
+    padding-left: 15px;
+}
+
+.current-price {
+    font-size: 13px;
+    vertical-align: text-bottom;
+}
+
+.offer-sale {
+    font-size: 13px;
+}
+
+.old-price {
+    font-size: 13px;
+    vertical-align:text-top;
+}
+
+.price-cut {
+    font-size: 20px;
+}
+
+.text-purple {
+    color: #574881;
+}
+
+.text-golden {
+    color: #B88822;
+}

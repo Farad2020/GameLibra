@@ -77,6 +77,11 @@ namespace GameLibra.Models
             return true;
         }
 
+
+        public string getNameWithoutSpaces() {
+            string NameTrimmed = String.Concat(Name.Where(c => !Char.IsWhiteSpace(c)));
+            return NameTrimmed.ToLower();
+        }
         //public virtual ICollection<Games_and_Owners> GameOwners { get; set; }
 
 

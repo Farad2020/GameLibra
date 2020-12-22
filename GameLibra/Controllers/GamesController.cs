@@ -8,6 +8,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using GameLibra.Models;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace GameLibra.Controllers
 {
@@ -63,7 +65,8 @@ namespace GameLibra.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("~/Views/Shared/404.cshtml");
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
             if (!String.IsNullOrEmpty(search_str))
@@ -72,22 +75,90 @@ namespace GameLibra.Controllers
             }
 
             //FindAsync(id)
+            if ( await db.Games.FindAsync(id) == null) {
+                return View("~/Views/Shared/404.cshtml");
+            }
             Game game = await db.Games.Where(g => g.Id == id)
                 .Include(g => g.Developer).Include(g => g.Publisher)
                 .Include(g => g.GameGenres).Include(g => g.GameImages)
                 .Include(g => g.GameTrailers)
                 .FirstAsync();
 
+
+            //This is poorly written part
+            // The following part is dedicated to receiving information from isthereanydeal API and sending it to the view
+            // To get info I need to use async method. But, since this method is already async method, calling another async method casuing a problem
+            // It simply gets the data too late. Probably, there is a way to make something better then implementing method inside another one.
+            // But I cant bother with it right now, to little time on my hands.
+
+            Models.ApiObject game_offers_info = new ApiObject();
+            string GameNameTrimmed = game.getNameWithoutSpaces();
+            string path = "https://api.isthereanydeal.com/v01/game/prices/?key=bfec8ca9256725997a38fcd84b3bfbe3367d2312&region=us&plains=" + GameNameTrimmed;
+            HttpClient client = new HttpClient();
+
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = await client.GetAsync(path);
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                //Models.ApiObject values =  Newtonsoft.Json.JsonConvert.DeserializeObject<Models.ApiObject>(result);
+                Newtonsoft.Json.Linq.JObject o = Newtonsoft.Json.Linq.JObject.Parse(result);
+                game_offers_info = new Models.ApiObject(Newtonsoft.Json.Linq.JObject.Parse(result), GameNameTrimmed);
+            }
+
+            //This part is switched off due to causing problems, that is mentioned in the upper comment.
+            /*
+            Models.ApiObject game_offers_info = new Models.ApiObject();
+            GetApiObject(game_offers_info, game.getNameWithoutSpaces());*/
+            if (game_offers_info.shop_infos != null)
+            {
+                ViewBag.game_offers_list = game_offers_info.GetTop4Offers();
+            }
+            else {
+                ViewBag.game_offers_list = null;
+            }
+            
+
+            //checking for errors
             if (game == null)
             {
-                return HttpNotFound();
+                return View("~/Views/Shared/404.cshtml");
             }
+
+            //Including Genres
             foreach (var item in game.GameGenres)
             {
                 item.Genre = db.Genres.Where(i => i.Id == item.GenreId).FirstOrDefault();
             }
 
+
             return View(game);
+        }
+
+
+        //Cuurently not so useful method.
+        public async void GetApiObject(Models.ApiObject game_info, string GameNameTrimmed)
+        {
+            //?pretty
+            string path = "https://api.isthereanydeal.com/v01/game/prices/?key=bfec8ca9256725997a38fcd84b3bfbe3367d2312&country=UK&plains=" + GameNameTrimmed;
+            HttpClient client = new HttpClient();
+
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = await client.GetAsync(path);
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                //Models.ApiObject values =  Newtonsoft.Json.JsonConvert.DeserializeObject<Models.ApiObject>(result);
+                Newtonsoft.Json.Linq.JObject o = Newtonsoft.Json.Linq.JObject.Parse(result);
+                game_info = new Models.ApiObject(Newtonsoft.Json.Linq.JObject.Parse(result), GameNameTrimmed);
+                return;
+            }
+
+            game_info = null;
         }
 
         // GET: Games/Details/5

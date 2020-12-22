@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using GameLibra.Models;
 using Microsoft.AspNet.Identity;
+using System.Web.Security;
 
 namespace GameLibra.Controllers
 {
@@ -48,6 +49,7 @@ namespace GameLibra.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(library);
         }
 

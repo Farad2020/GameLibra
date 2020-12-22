@@ -59,6 +59,14 @@ namespace GameLibra.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+            if (HttpContext.Request.Cookies["last_login_email_cookie"] == null)
+            {
+                ViewBag.last_login_email = "";
+            }
+            else {
+                ViewBag.last_login_email = HttpContext.Request.Cookies.Get("last_login_email_cookie").Value;
+            }
+                
             return View();
         }
 
@@ -69,6 +77,12 @@ namespace GameLibra.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+            if (HttpContext.Request.Cookies["last_login_email_cookie"] == null) {
+                HttpCookie last_login_email_cookie = new HttpCookie("last_login_email_cookie");
+                last_login_email_cookie.Value = model.Email;
+                last_login_email_cookie.Expires = DateTime.Now.AddDays(1);
+                HttpContext.Response.SetCookie(last_login_email_cookie);
+            }
             if (!ModelState.IsValid)
             {
                 return View(model);

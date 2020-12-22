@@ -28,22 +28,15 @@
         </div>
     </div>
     @Scripts.Render("~/bundles/jquery")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/main")
+
     @*<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>*@
+
     @RenderSection("scripts", required: false)
     <script src="https://kit.fontawesome.com/8acbe491d9.js" crossorigin="anonymous"></script>
-
-    <script>
-        function popper() {
-            $('[data-toggle="popover-hover"]').popover({
-                html: true,
-                trigger: 'hover',
-                placement: 'right',
-                content: function () { return '<img class="hover-image" src="' + $(this).data('img') + '" />'; }
-            });
-        }
-    </script>
 
 </body>
 </html>

@@ -122,3 +122,6 @@ C:\Users\Faraby\Desktop\Course_3_Semestr_5\MicrosoftDotNet\ProjectV2\GameLibra\G
 C:\Users\Faraby\Desktop\Course_3_Semestr_5\MicrosoftDotNet\ProjectV2\GameLibra\GameLibra\obj\Debug\GameLibra.Migrations.MaxLengthsToBasketsAdded.resources
 C:\Users\Faraby\Desktop\Course_3_Semestr_5\MicrosoftDotNet\ProjectV2\GameLibra\GameLibra\obj\Debug\GameLibra.Migrations.GenreNameIValidate.resources
 C:\Users\Faraby\Desktop\Course_3_Semestr_5\MicrosoftDotNet\ProjectV2\GameLibra\GameLibra\obj\Debug\GameLibra.Migrations.PublisherNameRegexModified.resources
+C:\Users\Faraby\Desktop\Course_3_Semestr_5\MicrosoftDotNet\ProjectV2\GameLibra\GameLibra\bin\System.Net.Http.Formatting.dll
+C:\Users\Faraby\Desktop\Course_3_Semestr_5\MicrosoftDotNet\ProjectV2\GameLibra\GameLibra\bin\System.Net.Http.Formatting.xml
+C:\Users\Faraby\Desktop\Course_3_Semestr_5\MicrosoftDotNet\ProjectV2\GameLibra\GameLibra\bin\Json.Net.dll

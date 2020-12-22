@@ -37,10 +37,8 @@
     @foreach (Game item in Model)
     {
         <tr>
-            <td>
-                <a data-toggle="popover-hover" data-img="@pics.First(i => i.GameId.Equals(item.Id)).Link">
+            <td class="link-to-image" data-toggle="popover-hover" data-img="@pics.First(i => i.GameId.Equals(item.Id)).Link">
                     @Html.DisplayFor(modelItem => item.Name)
-                </a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Release_date)
