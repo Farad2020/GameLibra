@@ -44,10 +44,6 @@ To load most of the views, loading templates to **_Layout.cshtml** is used is us
 
 [My Github](https://docs.github.com/Farad2020)
 
-#### Test password is:
-
-Test1234)
-
 #### Project was based on following task
 
 Collection tracker (web app). Build a tool to keep track of something you collect.
