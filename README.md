@@ -7,7 +7,8 @@ Hi! This is Markdown file for project **GameLibra**.
 
 > **GameLibra** is my web application, built on .Net MVC. For regular users, this app is for creating their own ***Libraries***  of games. 
 > That means, project has some library of games, and game related data stored in database. Then, registered and authorised users can browse trough the library of games and add that game into existing library. 
-> Thus creating a personal **Collection** of games.
+> Thus creating a personal **Collection** of games, where through IsThereAnyDeal, any applicable offers may be shown.
+> Currently works with eu region only
 
 # Starting the Project
 
@@ -40,10 +41,14 @@ To load most of the views, loading templates to **_Layout.cshtml** is used is us
 
 ["How to write a good readme"](https://medium.com/@meakaakka/a-beginners-guide-to-writing-a-kickass-readme-7ac01da88ab3)
 
-["IsThereAnyDealAPI"](https://itad.docs.apiary.io/#)
+[IsThereAnyDeal API](https://itad.docs.apiary.io/#)
+["Kingdom" game, source of most background images](https://www.kingdomthegame.com)
 
 [My Github](https://docs.github.com/Farad2020)
 
 #### Project was based on following task
 
 Collection tracker (web app). Build a tool to keep track of something you collect.
+
+#### Note for devs that will be trying out this project. 
+In GameLibra folder, web.confing file in "<system.web>" don't forget to turn "Off" "<customErrors mode="On">" to get more appropriate error pages.

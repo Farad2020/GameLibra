@@ -77,16 +77,18 @@ namespace GameLibra.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
-            if (HttpContext.Request.Cookies["last_login_email_cookie"] == null) {
-                HttpCookie last_login_email_cookie = new HttpCookie("last_login_email_cookie");
-                last_login_email_cookie.Value = model.Email;
-                last_login_email_cookie.Expires = DateTime.Now.AddDays(1);
-                HttpContext.Response.SetCookie(last_login_email_cookie);
-            }
+
+            HttpCookie last_login_email_cookie = new HttpCookie("last_login_email_cookie");
+            last_login_email_cookie.Value = model.Email;
+            last_login_email_cookie.Expires = DateTime.Now.AddDays(1);
+            HttpContext.Response.SetCookie(last_login_email_cookie);
+
+
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
+            /* This method cant work correctly if Username and email are different */
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true

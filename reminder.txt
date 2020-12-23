@@ -1,3 +1,7 @@
 dont forget to push project with following command
 $ git push origin main
 # Pushes the changes in your local repository up to the remote repository you specified as the origin
+
+#### login cant work correctly if username and email of user are different
+
+#### 404 page wont show, if user is not registered

@@ -1,0 +1,22 @@
+Honorable mentions:
+
+From API:
+IsThereAnyDealAPI - helps to find applicable offers to a game;
+
+From JS:
+Bootstrap modals
+Carousel
+Popper.js
+JQuery
+
+From embedded stuff:
+Iframes -> youtube embedding
+Google fonts
+
+Cookies(just for saving last logged person)
+
+Points List:
+Easy navigation
+Hand Crafted design and user experience
+Relevant website content
+Product Visuals and Descriptions

@@ -53,20 +53,24 @@
     <label style="color: white;font-size: xx-large">Included Games</label>
 </dt>
 <table class="table table-striped text-white">
-    
+    @if (ViewBag.LibraryGames == null || ViewBag.LibraryGames.Count == 0)
+    {
+        <label class="font-texturina" style="color: white;font-size: x-large;">Currently none! Go check our games, and add them!</label>
+    }
+
     @foreach (Games_and_Libraries item in ViewBag.LibraryGames)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Game.Name)
-    </td>
-    <td style="width: 10%;">
-        @Html.ActionLink("Details", "PublicDetails", "Games", new { id = item.GameId }, new { @class = "btn btn-sm btn-outline-light" })
-    </td>
-    <td style="width: 10%;">
-        @Html.ActionLink("Delete", "Delete", "Games_and_Libraries", new { id = item.Id}, new { @class = "btn btn-sm btn-outline-danger" })
-    </td>
-</tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Game.Name)
+            </td>
+            <td style="width: 10%;">
+                @Html.ActionLink("Details", "PublicDetails", "Games", new { id = item.GameId }, new { @class = "btn btn-sm btn-outline-light" })
+            </td>
+            <td style="width: 10%;">
+                @Html.ActionLink("Delete", "Delete", "Games_and_Libraries", new { id = item.Id }, new { @class = "btn btn-sm btn-outline-danger" })
+            </td>
+        </tr>
     }
 
 </table>
