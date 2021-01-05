@@ -47,3 +47,5 @@ To load most of the views, loading templates to **_Layout.cshtml** is used is us
 #### Project was based on following task
 
 Collection tracker (web app). Build a tool to keep track of something you collect.
+
+![alt text](https://github.com/Farad2020/GameLibra/blob/main/bonusDocs/C%23%20Dotnet%20ER%20Diagram.png)
