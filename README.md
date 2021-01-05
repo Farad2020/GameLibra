@@ -50,5 +50,10 @@ To load most of the views, loading templates to **_Layout.cshtml** is used is us
 
 Collection tracker (web app). Build a tool to keep track of something you collect.
 
+
 #### Note for devs that will be trying out this project. 
 In GameLibra folder, web.confing file in "<system.web>" don't forget to turn "Off" "<customErrors mode="On">" to get more appropriate error pages.
+
+
+![alt text](https://github.com/Farad2020/GameLibra/blob/main/bonusDocs/C%23%20Dotnet%20ER%20Diagram.png)
+
