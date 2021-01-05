@@ -55,5 +55,7 @@ Collection tracker (web app). Build a tool to keep track of something you collec
 In GameLibra folder, web.confing file in "<system.web>" don't forget to turn "Off" "<customErrors mode="On">" to get more appropriate error pages.
 
 
-![alt text](https://github.com/Farad2020/GameLibra/blob/main/bonusDocs/C%23%20Dotnet%20ER%20Diagram.png)
+![Snapshot_1](https://github.com/Farad2020/GameLibra/blob/main/bonusDocs/Opera%20Snapshot.png)
+![Snapshot_2](https://github.com/Farad2020/GameLibra/blob/main/bonusDocs/Opera%20Snapshot_2.png)
+![Snapshot_3](https://github.com/Farad2020/GameLibra/blob/main/bonusDocs/Opera%20Snapshot_3.png)
 
